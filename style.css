@@ -1,0 +1,58 @@
+body{
+    font-family: impact;
+}
+h1 {
+    animation-name: slidein;
+    animation-duration: 4s;
+}
+select {
+    height: 36px;
+}
+
+slidein {
+    @keyframes slidein {
+        from { 
+                margin-left : 100%;
+                width: 300%
+            }
+
+        to { 
+        margin-left: 0%;
+        width: 100%}
+    }
+}
+ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 25% 25% 25% ;
+    grid-template-rows: auto ;
+    justify-content: end;
+}
+li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: blueviolet;
+    height: auto;
+    width: auto;
+    margin: 35px;
+    border-radius: 10%;
+}
+li :hover{
+    transition-duration: 2s;
+    background-color: red;
+    background-size: 400%;
+    border-radius: 10%;
+}
+.image-container {
+    min-width: auto;
+    min-height: auto;
+}
+p {
+    min-width: auto;
+}
+img {
+    width : 200px;
+    height: auto;
+}
+
