@@ -6,6 +6,7 @@ const makeSelectAndOptions = () => {
     <div id = 'form'>
         <label>Filter By Horns<label>
             <select>
+                <option value = '0' id = 'all'>All</option>
                 <option value = '1' id = '1-horn'>1</option>
                 <option value = '2' id = '2-horns'>2</option>
                 <option value = '3' id = '3-horns'>3</option>
@@ -24,7 +25,7 @@ const renderImage = (image) => {
                 <div class = 'image'>
                     <img src = ${image.url}>
                 </div>
-                <p>${image.description}</p>
+                <p class = 'description'>${image.description}</p>
             </div>
         </li>`;
     
@@ -45,20 +46,28 @@ header.appendChild(dommedForm);
 
 
 dommedForm.addEventListener('change', () => {
-    debugger
     let masterList = document.querySelector('ul');
     while (masterList.lastElementChild){
         masterList.lastElementChild.remove();
     }
     const numberOfHorns = event.target.value;
-    let filteredByHorns = images.filter(thing => {
-        return (thing.horns === parseInt(numberOfHorns));
-    });
-    filteredByHorns.forEach(image => {
-        let html = renderImage(image);
-        let dommedHtml = htmlToDom(html);
-        let largeList = document.querySelector('ul');
-        largeList.appendChild(dommedHtml);
-    });
+    if (event.target.value === '0'){
+        images.forEach(image => {
+            let html = renderImage(image);
+            let dommedHtml = htmlToDom(html);
+            let largeList = document.querySelector('ul');
+            largeList.appendChild(dommedHtml);
+        });
+    }
+    else {
+        let filteredByHorns = images.filter(thing => {
+            return (thing.horns === parseInt(numberOfHorns));
+        });
+        filteredByHorns.forEach(image => {
+            let html = renderImage(image);
+            let dommedHtml = htmlToDom(html);
+            let largeList = document.querySelector('ul');
+            largeList.appendChild(dommedHtml);
+        });
+    }
 });
-
