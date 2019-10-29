@@ -1,26 +1,33 @@
 body{
     font-family: impact;
 }
-h1 {
+.header {
     animation-name: slidein;
     animation-duration: 4s;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
 }
 select {
     height: 36px;
 }
 
-slidein {
     @keyframes slidein {
         from { 
                 margin-left : 100%;
                 width: 300%
             }
 
+        50% {
+            margin-left: 0px;
+            width: auto;
+
+        }
+
         to { 
-        margin-left: 0%;
-        width: 100%}
+            margin-top: 200px;
+            width: auto;
+        }
     }
-}
 ul {
     list-style: none;
     display: grid;
